@@ -1,0 +1,6 @@
+ - Move sensitive information to .env file []
+ - Create context page to call states and props []
+ - Apply tailwind to project []
+
+ - Create Routers so there are seperate pages (about, favourites) []
+ - Apply unique styling []
