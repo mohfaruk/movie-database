@@ -19,7 +19,7 @@ function Navbar({ title }) {
             <Link to="/" className="btn btn-ghost btn-sm rounded-btn">
               Home
             </Link>
-            <Link to="/" className="btn btn-ghost btn-sm rounded-btn">
+            <Link to="/favourites" className="btn btn-ghost btn-sm rounded-btn">
               Faves
             </Link>
             <Link to="/about" className="btn btn-ghost btn-sm rounded-btn">

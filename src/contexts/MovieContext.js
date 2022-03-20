@@ -1,69 +1,62 @@
 import React, { createContext, useState, useEffect } from "react";
-import axios from "axios";
+import MovieList from "../../movie/MovieList";
+import MovieListHeading from "../../movie/MovieListHeading";
+import SearchBox from "../../movie/SearchBox";
+import AddFavourites from "../../movie/AddFavourites";
+import RemoveFavourites from "../../movie/RemoveFavourites";
 
 export const MovieContext = createContext();
 
 const API_KEY = "2e30e0cd"; // OMDb API Key
 
 const MovieApp = ({ children }) => {
-  const [favorites, setFavorites] = useState([]);
-  const [movies, setMovies] = useState();
-  const [search, setSearch] = useState("");
-  const [selectedMovie, setSelectedMovie] = useState("");
+  const [movies, setMovies] = useState([]);
+  const [favourites, setFavourites] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
-  const fetchMovies = async searchValue => {
-    const response = await axios(
-      `https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchValue}`
-    );
-    const data = response.data;
-    setMovies(data.Search);
-  };
+  const getMovieRequest = async searchValue => {
+    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=2e30e0cd`;
 
-  // const movieRequest = async searchValue => {
-  //   //const url = "http://www.omdbapi.com/?s=the batman&apikey=2e30e0cd";
-  //   const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=${API_KEY}`;
-  //   const response = await fetch(url);
-  //   const data = await response.json();
-  //   setMovies(data.Search);
+    const response = await fetch(url);
+    const responseJson = await response.json();
 
-  //   console.log(data);
-  // };
-
-  const removeFavoriteMovie = movie => {
-    movie.isFavorite = false;
-    const newFavoriteList = favorites.filter(
-      fav => fav.imdbID !== movie.imdbID
-    );
-    setFavorites(newFavoriteList);
-  };
-
-  const addFavoriteMovie = movie => {
-    movie.isFavorite = true;
-    const newFavoriteList = [...favorites, movie];
-    setFavorites(newFavoriteList);
-  };
-
-  const favoriteHandler = (movie, e) => {
-    e.preventDefault();
-    if (favorites.includes(movie)) {
-      removeFavoriteMovie(movie);
-    } else {
-      addFavoriteMovie(movie);
+    if (responseJson.Search) {
+      setMovies(responseJson.Search);
     }
   };
 
-  const showDetail = async id => {
-    const response = await axios(
-      `https://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`
-    );
-    const data = response.data;
-    setSelectedMovie(data);
-  };
+  useEffect(() => {
+    getMovieRequest(searchValue);
+  }, [searchValue]);
 
   useEffect(() => {
-    console.log(API_KEY);
-    fetchMovies(search);
-  }, [search]);
+    const movieFavourites = JSON.parse(
+      localStorage.getItem("react-movie-app-favourites")
+    );
+
+    if (movieFavourites) {
+      setFavourites(movieFavourites);
+    }
+  }, []);
+
+  const saveToLocalStorage = items => {
+    localStorage.setItem("react-movie-app-favourites", JSON.stringify(items));
+  };
+
+  const addFavouriteMovie = movie => {
+    const newFavouriteList = [...favourites, movie];
+    setFavourites(newFavouriteList);
+    saveToLocalStorage(newFavouriteList);
+  };
+
+  const removeFavouriteMovie = movie => {
+    const newFavouriteList = favourites.filter(
+      favourite => favourite.imdbID !== movie.imdbID
+    );
+
+    setFavourites(newFavouriteList);
+    saveToLocalStorage(newFavouriteList);
+  };
 
   return (
     <MovieContext.Provider
