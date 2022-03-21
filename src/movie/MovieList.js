@@ -1,23 +1,24 @@
-import React from "react";
+import { useContext } from "react";
+import MovieContext from "../contexts/MovieContext";
+import MovieItem from "./MovieItem";
 
-const MovieList = props => {
-  const FavouriteComponent = props.favouriteComponent;
+function MovieList() {
+  const { movies, addMovieToFaves } = useContext(MovieContext);
+  //const FavouriteComponent = props.favouriteComponent;
 
   return (
-    <>
-      {props.movies.map((movie, index) => (
-        <div className="image-container d-flex justify-content-start m-3">
-          <img src={movie.Poster} alt="movie"></img>
-          <div
-            onClick={() => props.handleFavouritesClick(movie)}
-            className="overlay d-flex align-items-center justify-content-center"
-          >
-            <FavouriteComponent />
-          </div>
-        </div>
+    <div className="grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 gap-10 container-fluid movie-app">
+      {movies.map(movie => (
+        <MovieItem
+          key={movie.imdbID}
+          movie={movie}
+          addMovieToFaves={addMovieToFaves}
+        />
       ))}
-    </>
+
+      {/* <FavouriteComponent /> */}
+    </div>
   );
-};
+}
 
 export default MovieList;

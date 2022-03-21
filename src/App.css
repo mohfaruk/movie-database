@@ -22,6 +22,11 @@
 	opacity: 1;
 }
 
+.image-size {
+	height: 100%;
+	width: 100%;
+}
+
 .overlay {
 	position: absolute;
 	background: rgba(0, 0, 0, 0.8);
@@ -29,7 +34,19 @@
 	transition: 0.5s ease;
 	opacity: 0;
 	bottom: 0;
-	font-size: 20px;
 	padding: 20px;
+	margin: 0;
 	text-align: center;
+}
+
+.movie-text {
+	text-align: center;
+}
+
+.movie-text h3 {
+	font-size: 20px;
+}
+
+.movie-text p {
+	font-size: 15px;
 }
