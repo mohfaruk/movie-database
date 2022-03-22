@@ -26,7 +26,6 @@ const MovieApp = ({ children }) => {
       .then(data => {
         if (!data.errors) {
           setMovies(data.results);
-          console.log(data.results);
         } else {
           setMovies([]);
         }

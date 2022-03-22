@@ -11,9 +11,7 @@ const Faves = props => {
     <div className="image-container d-flex justify-content-start m-3">
       {faves.length > 0 ? (
         <div>
-          {faves.map((movie, id) => (
-            <MovieList movie={movie} key={id} type="faves" />
-          ))}
+          <MovieList movies={faves} type="faves" />
         </div>
       ) : (
         <h2>There are no movies in your list.</h2>

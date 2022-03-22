@@ -1,14 +1,13 @@
 import PropTypes from "prop-types";
 import { useContext } from "react";
 import MovieContext from "../contexts/MovieContext";
-//import { Link } from "react-router-dom";
 
-function MovieItem({ movie: { poster_path, original_title, release_date } }) {
-  const { movie, addMovieToFaves } = useContext(MovieContext);
+function MovieItem({ movie }) {
+  const { poster_path, original_title, release_date } = movie;
+  const { addMovieToFaves } = useContext(MovieContext);
 
   return (
     <div className=" image-container d-flex justify-content-start my-10">
-      {/* <p>{Plot}</p> */}
       <img
         src={`https://image.tmdb.org/t/p/w200${poster_path}`}
         className="image-size"

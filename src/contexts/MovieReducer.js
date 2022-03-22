@@ -3,7 +3,7 @@ export default (state, action) => {
     case "ADD_MOVIE":
       return {
         ...state,
-        faves: [action.payload, ...state.watchlist],
+        faves: [action.payload, ...state.faves],
       };
     case "REMOVE_MOVIE":
       return {
