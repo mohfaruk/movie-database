@@ -9,7 +9,7 @@ const initialState = {
     : [],
 };
 
-//const API_KEY = "2e30e0cd"; // OMDb API Key
+//const API_KEY = "41bbc9ddef422c7423ada83d8a7eae52"; // TMDB API Key
 
 const MovieApp = ({ children }) => {
   const [movies, setMovies] = useState([]);
@@ -19,19 +19,19 @@ const MovieApp = ({ children }) => {
   const [state, dispatch] = useReducer(MovieReducer, initialState);
 
   const getMovieRequest = async searchValue => {
-    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=2e30e0cd`;
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=41bbc9ddef422c7423ada83d8a7eae52&language=en-US&page=1&include_adult=false&query=${searchValue}`;
 
-    const response = await fetch(url);
-    const responseJson = await response.json();
-
-    if (responseJson.Search) {
-      setMovies(responseJson.Search);
-    }
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        if (!data.errors) {
+          setMovies(data.results);
+          console.log(data.results);
+        } else {
+          setMovies([]);
+        }
+      });
   };
-
-  // const saveToLocalStorage = items => {
-  //   localStorage.setItem("react-movie-app-favourites", JSON.stringify(items));
-  // };
 
   useEffect(() => {
     localStorage.setItem("faves", JSON.stringify(state.faves));
