@@ -5,10 +5,8 @@ import MovieList from "../../movie/MovieList";
 const Faves = props => {
   const { faves } = useContext(MovieContext);
 
-  //const FavouriteComponent = props.favouriteComponent;
-
   return (
-    <div className="image-container d-flex justify-content-start m-3">
+    <div className="d-flex justify-content-start m-3">
       {faves.length > 0 ? (
         <div>
           <MovieList movies={faves} type="faves" />

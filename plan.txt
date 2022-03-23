@@ -1,8 +1,5 @@
  - Move sensitive information to .env file []
- - Create context page to call states and props []
- - Apply tailwind to project [x]
- - Allow users to click on item which takes 
-   to a page with further information
-
- - Create Routers so there are seperate pages (about, favourites) [x]
+ - Allow users to click on item which opens a 
+   modal that includes further info on movie []
  - Apply unique styling []
+ - Button functionality should be remembered []

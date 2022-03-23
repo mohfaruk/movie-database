@@ -14,6 +14,7 @@ const initialState = {
 const MovieApp = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [favourites, setFavourites] = useState([]);
+
   //const [searchValue, setSearchValue] = useState("");
 
   const [state, dispatch] = useReducer(MovieReducer, initialState);
