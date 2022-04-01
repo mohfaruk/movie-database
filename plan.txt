@@ -2,4 +2,4 @@
  - Allow users to click on item which opens a 
    modal that includes further info on movie []
  - Apply unique styling []
- - Button functionality should be remembered []
+ - Button functionality should be remembered [x]
