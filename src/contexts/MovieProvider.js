@@ -14,6 +14,7 @@ const initialState = {
 const MovieApp = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [favourites, setFavourites] = useState([]);
+  // const [modalOpen, setModalOpen] = useState(false);
 
   //const [searchValue, setSearchValue] = useState("");
 
@@ -45,6 +46,10 @@ const MovieApp = ({ children }) => {
     dispatch({ type: "REMOVE_MOVIE", payload: id });
   };
 
+  // const toggleModal = () => {
+  //   setModalOpen(!modalOpen);
+  // };
+
   return (
     <MovieContext.Provider
       value={{
@@ -56,6 +61,8 @@ const MovieApp = ({ children }) => {
         //saveToLocalStorage,
         addMovieToFaves,
         removeMovieToFaves,
+        // modalOpen,
+        // toggleModal,
       }}
     >
       {children}

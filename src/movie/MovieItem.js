@@ -4,7 +4,15 @@ import MovieContext from "../contexts/MovieContext";
 import MovieModal from "./MovieModal";
 
 function MovieItem({ movie }) {
-  const { id, poster_path, original_title, release_date, overview } = movie;
+  const {
+    id,
+    poster_path,
+    original_title,
+    release_date,
+    overview,
+    vote_average,
+  } = movie;
+
   const { addMovieToFaves, removeMovieToFaves, faves } =
     useContext(MovieContext);
 
@@ -21,6 +29,10 @@ function MovieItem({ movie }) {
     removeMovieToFaves(id);
   }
 
+  const toggleModal = () => {
+    setModalOpen(!modalOpen);
+  };
+
   return (
     <div>
       {modalOpen && (
@@ -29,6 +41,9 @@ function MovieItem({ movie }) {
           date={release_date}
           poster={poster_path}
           plot={overview}
+          score={vote_average}
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
         />
       )}
 
@@ -40,13 +55,7 @@ function MovieItem({ movie }) {
         ></img>
         <div className="movie-text">
           <h3>{original_title}</h3>
-          <p>{release_date ? release_date : " "}</p>
-          <button
-            onClick={() => {
-              setModalOpen(!modalOpen);
-            }}
-            className="btn"
-          >
+          <button onClick={toggleModal} className="btn">
             More Info
           </button>
 

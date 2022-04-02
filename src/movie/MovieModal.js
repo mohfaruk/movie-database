@@ -1,31 +1,46 @@
 // import PropTypes from "prop-types";
-import { useContext, useState } from "react";
-import MovieContext from "../contexts/MovieContext";
+import { useEffect } from "react";
+import { FaTimes } from "react-icons/fa";
 
-function MovieModal({ title, date, poster, plot }) {
-  // const { id, poster_path, original_title, release_date } = movie;
-
-  // if (modal) {
-  //   document.body.classList.add("active-modal");
-  // } else {
-  //   document.body.classList.remove("active-modal");
-  // }
+function MovieModal({
+  title,
+  date,
+  poster,
+  plot,
+  score,
+  modalOpen,
+  setModalOpen,
+}) {
+  const toggleModal = () => {
+    setModalOpen(!modalOpen);
+  };
 
   return (
-    <div className="modal-popup">
+    <div className="modal-popup container-fluid movie-app">
       <div className="dark-overlay"></div>
-      <div className="modal-content">
-        <h1>{title}</h1>
-        <img
-          src={`https://image.tmdb.org/t/p/w200${poster}`}
-          className="modal-image"
-          alt="movie"
-        ></img>
-        <p>{date}</p>
-        <p>{plot}</p>
-        {/* <button className="close-modal" onClick={toggleModal}>
-          CLOSE
-        </button> */}
+      <div className="modal-container">
+        <div className="text-center">
+          <h1 className="text-4xl uppercase">{title}</h1>
+        </div>
+        <div className="poster-container my-7">
+          <img
+            src={`https://image.tmdb.org/t/p/w200${poster}`}
+            className="flex modal-image content-center"
+            alt="movie"
+          ></img>
+        </div>
+        <div className="text-center text-lg">
+          <p className="my-5">{plot}</p>
+          <p>
+            <span className="font-bold">Release Date:</span> {date ? date : " "}
+          </p>
+          <p>
+            <span className="font-bold">Vote Average:</span> {score}/10
+          </p>
+        </div>
+        <button className="close-modal" onClick={toggleModal}>
+          <FaTimes />
+        </button>
       </div>
     </div>
   );
