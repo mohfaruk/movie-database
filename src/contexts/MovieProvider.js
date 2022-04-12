@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import MovieContext from "./MovieContext";
 import MovieReducer from "./MovieReducer";
 
@@ -14,14 +14,25 @@ const initialState = {
 const MovieApp = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [favourites, setFavourites] = useState([]);
-  // const [modalOpen, setModalOpen] = useState(false);
-
-  //const [searchValue, setSearchValue] = useState("");
 
   const [state, dispatch] = useReducer(MovieReducer, initialState);
 
   const getMovieRequest = async searchValue => {
     const url = `https://api.themoviedb.org/3/search/movie?api_key=41bbc9ddef422c7423ada83d8a7eae52&language=en-US&page=1&include_adult=false&query=${searchValue}`;
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        if (!data.errors) {
+          setMovies(data.results);
+        } else {
+          setMovies([]);
+        }
+      });
+  };
+
+  const getPopularMovies = () => {
+    const url = `https://api.themoviedb.org/3/movie/popular?api_key=41bbc9ddef422c7423ada83d8a7eae52&language=en-US&page=1`;
 
     fetch(url)
       .then(res => res.json())
@@ -46,23 +57,17 @@ const MovieApp = ({ children }) => {
     dispatch({ type: "REMOVE_MOVIE", payload: id });
   };
 
-  // const toggleModal = () => {
-  //   setModalOpen(!modalOpen);
-  // };
-
   return (
     <MovieContext.Provider
       value={{
         movies,
         faves: state.faves,
         favourites,
-        //searchValue,
         getMovieRequest,
+        getPopularMovies,
         //saveToLocalStorage,
         addMovieToFaves,
         removeMovieToFaves,
-        // modalOpen,
-        // toggleModal,
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import MovieItem from "./MovieItem";
 
 function MovieList({ movies }) {
@@ -12,5 +12,3 @@ function MovieList({ movies }) {
 }
 
 export default MovieList;
-
-//xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3

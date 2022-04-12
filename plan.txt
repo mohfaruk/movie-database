@@ -1,4 +1,4 @@
  - Move sensitive information to .env file []
  - Apply unique styling (font style, colours) []
- - Display popular movies in the home page []
+ - Prevent popular movies from re-rendering when user searches []
  - For movies with no images, create a default image for them []
