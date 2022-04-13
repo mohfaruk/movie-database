@@ -2,14 +2,15 @@ import React, { useState, useEffect, useReducer } from "react";
 import MovieContext from "./MovieContext";
 import MovieReducer from "./MovieReducer";
 
+const API_URL = process.env.REACT_APP_MOVIE_URL;
+const API_KEY = process.env.REACT_APP_MOVIE_KEY;
+
 // initial state
 const initialState = {
   faves: localStorage.getItem("faves")
     ? JSON.parse(localStorage.getItem("faves"))
     : [],
 };
-
-//const API_KEY = "41bbc9ddef422c7423ada83d8a7eae52"; // TMDB API Key
 
 const MovieApp = ({ children }) => {
   const [movies, setMovies] = useState([]);
@@ -18,7 +19,8 @@ const MovieApp = ({ children }) => {
   const [state, dispatch] = useReducer(MovieReducer, initialState);
 
   const getMovieRequest = async searchValue => {
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=41bbc9ddef422c7423ada83d8a7eae52&language=en-US&page=1&include_adult=false&query=${searchValue}`;
+    // const url = `https://api.themoviedb.org/3/search/movie?api_key=41bbc9ddef422c7423ada83d8a7eae52&language=en-US&page=1&include_adult=false&query=${searchValue}`;
+    const url = `${API_URL}3/search/movie?${API_KEY}&language=en-US&page=1&include_adult=false&query=${searchValue}`;
 
     fetch(url)
       .then(res => res.json())
@@ -32,7 +34,8 @@ const MovieApp = ({ children }) => {
   };
 
   const getPopularMovies = () => {
-    const url = `https://api.themoviedb.org/3/movie/popular?api_key=41bbc9ddef422c7423ada83d8a7eae52&language=en-US&page=1`;
+    // const url = `https://api.themoviedb.org/3/movie/popular?api_key=41bbc9ddef422c7423ada83d8a7eae52&language=en-US&page=1`;
+    const url = `${API_URL}3/movie/popular?${API_KEY}&language=en-US&page=1`;
 
     fetch(url)
       .then(res => res.json())

@@ -7,7 +7,7 @@ function About() {
       <p className="mb-4 text-2xl font-light">
         A React app that allows users to search up their favourite movies and tv
         series. This project was built using React, Tailwind CSS, Daisy UI and
-        the OMDB API.
+        the TMDB API.
       </p>
     </div>
   );

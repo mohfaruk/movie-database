@@ -1,4 +1,10 @@
- - Move sensitive information to .env file []
- - Apply unique styling (font style, colours) []
+ - Move sensitive information to .env file [x]
+  - Set this up on github before final commit []
+ - Apply unique styling (font style, colours) [x]
  - Prevent popular movies from re-rendering when user searches []
  - For movies with no images, create a default image for them []
+
+ Learning Points:
+ - Reducers []
+ - useEffect []
+ - Asynchronous JS
