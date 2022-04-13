@@ -55,17 +55,17 @@ function MovieItem({ movie }) {
         ></img>
         <div className="movie-text">
           <h3>{original_title}</h3>
-          <button onClick={toggleModal} className="btn">
+          <button onClick={toggleModal} className="btn m-2">
             More Info
           </button>
 
           {!btnDisabled ? (
             <button onClick={addFaveHandler} className="btn">
-              Add to Faves
+              Watchlist +
             </button>
           ) : (
             <button onClick={removeFaveHandler} className="btn">
-              Remove from Faves
+              Watchlist -
             </button>
           )}
         </div>

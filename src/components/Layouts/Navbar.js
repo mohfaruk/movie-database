@@ -23,7 +23,7 @@ function Navbar({ title }) {
               to="/faves"
               className="btn text-lg btn-ghost btn-sm rounded-btn"
             >
-              Faves
+              Watchlist
             </Link>
             <Link
               to="/about"

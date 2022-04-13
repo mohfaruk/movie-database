@@ -12,7 +12,7 @@ const Faves = props => {
           <MovieList movies={faves} type="faves" />
         </div>
       ) : (
-        <h2>There are no movies in your list.</h2>
+        <h2>There are no movies in your watchlist.</h2>
       )}
     </div>
   );
