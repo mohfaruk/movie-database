@@ -38,7 +38,7 @@ function MovieModal({
             <span className="font-bold">Vote Average:</span> {score}/10
           </p>
         </div>
-        <button className="close-modal" onClick={toggleModal}>
+        <button className="close-modal text-3xl" onClick={toggleModal}>
           <FaTimes />
         </button>
       </div>

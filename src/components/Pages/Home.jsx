@@ -10,13 +10,14 @@ const Home = () => {
   const [searchValue, setSearchValue] = useState("");
   const [userInput, setUserInput] = useState(false);
 
+  //Not sure if the below is good code practice
   useEffect(() => {
-    getMovieRequest(searchValue);
+    userInput ? getMovieRequest(searchValue) : getPopularMovies();
   }, [searchValue]);
 
-  useEffect(() => {
-    getPopularMovies();
-  }, [movies]);
+  // useEffect(() => {
+  //   getPopularMovies();
+  // }, []);
 
   return (
     <div>

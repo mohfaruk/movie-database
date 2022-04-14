@@ -1,10 +1,12 @@
  - Move sensitive information to .env file [x]
   - Set this up on github before final commit []
- - Apply unique styling (font style, colours) [x]
- - Prevent popular movies from re-rendering when user searches []
- - For movies with no images, create a default image for them []
+ - When input has been deleted, render popular movies []
 
  Learning Points:
  - Reducers []
  - useEffect []
- - Asynchronous JS
+ - Asynchronous JS []
+
+ Error: 
+ - localhost/:1 Error while trying to use the following icon from the Manifest: http://localhost:3000/logo192.png (Download error or resource isn't a valid image)
+ - GET https://api.themoviedb.org/3/search/movie?api_key=41bbc9ddef422c7423ada83d8a7eae52&language=en-US&page=1&include_adult=false&query= 422
