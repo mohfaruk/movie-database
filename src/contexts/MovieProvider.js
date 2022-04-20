@@ -19,7 +19,6 @@ const MovieApp = ({ children }) => {
   const [state, dispatch] = useReducer(MovieReducer, initialState);
 
   const getMovieRequest = async searchValue => {
-    // const url = `https://api.themoviedb.org/3/search/movie?api_key=41bbc9ddef422c7423ada83d8a7eae52&language=en-US&page=1&include_adult=false&query=${searchValue}`;
     const url = `${API_URL}3/search/movie?${API_KEY}&language=en-US&page=1&include_adult=false&query=${searchValue}`;
 
     fetch(url)
@@ -34,7 +33,6 @@ const MovieApp = ({ children }) => {
   };
 
   const getPopularMovies = () => {
-    // const url = `https://api.themoviedb.org/3/movie/popular?api_key=41bbc9ddef422c7423ada83d8a7eae52&language=en-US&page=1`;
     const url = `${API_URL}3/movie/popular?${API_KEY}&language=en-US&page=1`;
 
     fetch(url)

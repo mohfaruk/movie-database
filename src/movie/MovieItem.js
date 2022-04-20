@@ -63,11 +63,11 @@ function MovieItem({ movie }) {
 
           {!btnDisabled ? (
             <button onClick={addFaveHandler} className="btn">
-              Watchlist +
+              To Watch
             </button>
           ) : (
             <button onClick={removeFaveHandler} className="btn">
-              Watchlist -
+              Remove
             </button>
           )}
         </div>
