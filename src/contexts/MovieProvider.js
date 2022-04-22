@@ -7,8 +7,8 @@ const API_KEY = process.env.REACT_APP_MOVIE_KEY;
 
 // initial state
 const initialState = {
-  faves: localStorage.getItem("faves")
-    ? JSON.parse(localStorage.getItem("faves"))
+  watchlist: localStorage.getItem("watchlist")
+    ? JSON.parse(localStorage.getItem("watchlist"))
     : [],
 };
 
@@ -47,14 +47,14 @@ const MovieApp = ({ children }) => {
   };
 
   useEffect(() => {
-    localStorage.setItem("faves", JSON.stringify(state.faves));
+    localStorage.setItem("watchlist", JSON.stringify(state.watchlist));
   }, [state]);
 
-  const addMovieToFaves = movie => {
+  const addMovieToWatch = movie => {
     dispatch({ type: "ADD_MOVIE", payload: movie });
   };
 
-  const removeMovieToFaves = id => {
+  const removeMovieToWatch = id => {
     dispatch({ type: "REMOVE_MOVIE", payload: id });
   };
 
@@ -62,13 +62,12 @@ const MovieApp = ({ children }) => {
     <MovieContext.Provider
       value={{
         movies,
-        faves: state.faves,
+        watchlist: state.watchlist,
         favourites,
         getMovieRequest,
         getPopularMovies,
-        //saveToLocalStorage,
-        addMovieToFaves,
-        removeMovieToFaves,
+        addMovieToWatch,
+        removeMovieToWatch,
       }}
     >
       {children}

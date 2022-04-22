@@ -1,5 +1,3 @@
-// import PropTypes from "prop-types";
-import { useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 
 function MovieModal({
@@ -45,9 +43,5 @@ function MovieModal({
     </div>
   );
 }
-
-// MovieModal.propTypes = {
-//   movie: PropTypes.object.isRequired,
-// };
 
 export default MovieModal;

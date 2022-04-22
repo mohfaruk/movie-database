@@ -4,20 +4,15 @@ import SearchBox from "../../movie/SearchBox";
 import MovieList from "../../movie/MovieList";
 import PopularMovies from "../../movie/PopularMovies";
 
-const Home = () => {
+function Home() {
   const { movies, getMovieRequest, getPopularMovies } =
     useContext(MovieContext);
   const [searchValue, setSearchValue] = useState("");
   const [userInput, setUserInput] = useState(false);
 
-  //Not sure if the below is good code practice
   useEffect(() => {
     userInput ? getMovieRequest(searchValue) : getPopularMovies();
   }, [searchValue]);
-
-  // useEffect(() => {
-  //   getPopularMovies();
-  // }, []);
 
   return (
     <div>
@@ -34,11 +29,9 @@ const Home = () => {
         ) : (
           <MovieList movies={movies} />
         )}
-
-        {/* <MovieList movies={movies} /> */}
       </main>
     </div>
   );
-};
+}
 
 export default Home;

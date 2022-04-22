@@ -14,20 +14,20 @@ function MovieItem({ movie }) {
     vote_average,
   } = movie;
 
-  const { addMovieToFaves, removeMovieToFaves, faves } =
+  const { addMovieToWatch, removeMovieToWatch, watchlist } =
     useContext(MovieContext);
 
   const [modalOpen, setModalOpen] = useState(false);
 
-  let storedMovie = faves.find(item => item.id === movie.id);
+  let storedMovie = watchlist.find(item => item.id === movie.id);
   const btnDisabled = storedMovie ? true : false;
 
-  function addFaveHandler() {
-    addMovieToFaves(movie);
+  function addWatchHandler() {
+    addMovieToWatch(movie);
   }
 
-  function removeFaveHandler() {
-    removeMovieToFaves(id);
+  function removeWatchHandler() {
+    removeMovieToWatch(id);
   }
 
   const toggleModal = () => {
@@ -62,11 +62,11 @@ function MovieItem({ movie }) {
           </button>
 
           {!btnDisabled ? (
-            <button onClick={addFaveHandler} className="btn">
+            <button onClick={addWatchHandler} className="btn">
               To Watch
             </button>
           ) : (
-            <button onClick={removeFaveHandler} className="btn">
+            <button onClick={removeWatchHandler} className="btn">
               Remove
             </button>
           )}

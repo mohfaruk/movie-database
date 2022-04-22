@@ -3,12 +3,12 @@ export default (state, action) => {
     case "ADD_MOVIE":
       return {
         ...state,
-        faves: [action.payload, ...state.faves],
+        watchlist: [action.payload, ...state.watchlist],
       };
     case "REMOVE_MOVIE":
       return {
         ...state,
-        faves: state.faves.filter(movie => movie.id !== action.payload),
+        watchlist: state.watchlist.filter(movie => movie.id !== action.payload),
       };
     default:
       return state;
