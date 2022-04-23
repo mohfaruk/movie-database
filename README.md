@@ -1,3 +1,23 @@
+## Movie WatchList
+
+A React application that fetches data from a movie database API. It dynamically renders information on most movies and tv series. This information is displayed on a modal, which prevents users from being taken to another page. As an added feature, you are able to add movies/tv shows to a watchlist, which is saved to local storage. Additionally, the app was styled using Tailwind CSS and Daisy UI.
+
+## Lessons Learned
+
+Although I have worked with external API’s before with JavaScript projects, this was a first with a React project. I had a lot of fun building this app and extracting movie data from JSON files. The project was also a refresher on using asynchronous JavaScript (async/await, fetch API), and I learned a lot about error handling.
+
+Moreover, I used this project as an opportunity to use React Router into a project. Using Router was straightforward and its implementation made navigating to different links smooth.
+
+I wasn’t content with the app only rendering movie data and I wanted to implement some usability. For this reason, I included a watch list route that displays movies that the user would like to watch at some point. The user can easily add or remove movies with the click of a button.
+
+Styling was applied using Tailwind CSS for the apps structure & design, and Daisy UI for its theme & colour palette. This allowed me to focus on React concepts and applying functionality.
+
+## Future Updates
+
+• Include a search feature that filters displayed movies based on genres (action, adventure, fantasy etc). This could be in the form of a drop down menu placed next to the search bar.
+
+• Add further information on movies such as duration, actors/actresses and a link to it’s trailer.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
