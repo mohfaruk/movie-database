@@ -9,12 +9,12 @@ function Navbar({ title }) {
       <div className="container mx-auto">
         <div className="flex-none px-2 mx-2">
           <FaFilm className="inline pr-2 text-3xl" />
-          <Link to="/" className="text-2xl font-bold align-middle">
+          <Link to="/" className="app-title text-2xl font-bold align-middle">
             {title}
           </Link>
         </div>
 
-        <div className="flex-1 px-2 mx-2">
+        <div className="flex-1 px-2 mx-2 nav-links">
           <div className="flex justify-end">
             <Link to="/" className="btn text-lg btn-ghost btn-sm rounded-btn">
               Home
