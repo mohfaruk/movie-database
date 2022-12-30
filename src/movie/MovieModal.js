@@ -15,7 +15,7 @@ function MovieModal({
 
   return (
     <div className="modal-popup container-fluid movie-app">
-      <div className="dark-overlay"></div>
+      <div className="dark-overlay" onClick={toggleModal}></div>
       <div className="modal-container">
         <div className="text-center">
           <h1 className="text-4xl uppercase">{title}</h1>
